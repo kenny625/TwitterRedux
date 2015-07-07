@@ -49,12 +49,22 @@
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveViewWithGestureRecognizer:)];
     [self.view addGestureRecognizer:panGestureRecognizer];
     
+    
+        
     self.leftMenuTableViewController = [[LeftMenuTableViewController alloc] init];
     
     [self addChildViewController:self.leftMenuTableViewController];
     [self.view addSubview:self.leftMenuTableViewController.view];
     [self.leftMenuTableViewController didMoveToParentViewController:self];
     
+    self.tapGestureRecognizer =
+    [[UITapGestureRecognizer alloc]
+     initWithTarget:self
+     action:@selector(onTap)];
+    
+}
+- (void)onTap {
+    [self closeMenu];
 }
 
 - (void)moveViewWithGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer {
@@ -62,9 +72,15 @@
     if (velocity.x > 50) {
         [self revealMenu];
     }
+    
+    if (velocity.x < -50) {
+        [self closeMenu];
+    }
 }
 
 - (void)revealMenu {
+    [self.view addGestureRecognizer:self.tapGestureRecognizer];
+    
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
                          self.leftMenuTableViewController.view.frame = CGRectMake(0.0f, 64.0f, [[UIScreen mainScreen] bounds].size.width * 0.4f, self.view.frame.size.height);
@@ -75,6 +91,8 @@
 }
 
 - (void)closeMenu {
+    [self.view removeGestureRecognizer:self.tapGestureRecognizer];
+    
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
                          self.leftMenuTableViewController.view.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width * (-0.4f), 64.0f, [[UIScreen mainScreen] bounds].size.width * 0.4f, self.view.frame.size.height);

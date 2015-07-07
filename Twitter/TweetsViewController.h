@@ -11,4 +11,5 @@
 
 @interface TweetsViewController : UIViewController
 @property (strong, nonatomic) LeftMenuTableViewController * leftMenuTableViewController;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @end

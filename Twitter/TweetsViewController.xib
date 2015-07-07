@@ -28,12 +28,6 @@
                 <constraint firstItem="2Ze-UK-1M6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lYY-DX-6vv"/>
                 <constraint firstItem="2Ze-UK-1M6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lh9-GO-HgO"/>
             </constraints>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="c7X-ue-p76" appends="YES" id="jvD-cJ-SVA"/>
-                <outletCollection property="gestureRecognizers" destination="JpG-cv-gcJ" appends="YES" id="ltL-DJ-fyf"/>
-            </connections>
         </view>
-        <panGestureRecognizer minimumNumberOfTouches="1" id="c7X-ue-p76"/>
-        <tapGestureRecognizer id="JpG-cv-gcJ"/>
     </objects>
 </document>
