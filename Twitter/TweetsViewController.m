@@ -13,8 +13,12 @@
 #import "TweetTableViewCell.h"
 #import "DetailTableViewController.h"
 #import "ComposeViewController.h"
+#import "ProfileViewController.h"
+#import "MentionsViewController.h"
+#import "MenuTableViewCell.h"
+#import "AppDelegate.h"
 
-@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource, TweetTableViewCellDelegate>
+@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource, TweetTableViewCellDelegate, LeftMenuTableViewControllerDelegate, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (nonatomic, strong) NSArray *tweets;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
@@ -30,13 +34,7 @@
     
     [self.tableview registerNib:[UINib nibWithNibName:@"TweetTableViewCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
     
-    self.navigationItem.title = @"Home";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(onLogout)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(onNewTweet)];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.24 green:0.78 blue:0.96 alpha:0.5];
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.navigationBarHidden = NO;
-    // Do any additional setup after loading the view from its nib.
+    [self setHomeNavigationBar];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor purpleColor];
@@ -46,23 +44,47 @@
                   forControlEvents:UIControlEventValueChanged];
     [self.tableview addSubview:self.refreshControl];
     
-    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveViewWithGestureRecognizer:)];
-    [self.view addGestureRecognizer:panGestureRecognizer];
     
     
-        
+    
     self.leftMenuTableViewController = [[LeftMenuTableViewController alloc] init];
     
     [self addChildViewController:self.leftMenuTableViewController];
     [self.view addSubview:self.leftMenuTableViewController.view];
     [self.leftMenuTableViewController didMoveToParentViewController:self];
     
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveViewWithGestureRecognizer:)];
+    [self.view addGestureRecognizer:panGestureRecognizer];
+    
     self.tapGestureRecognizer =
     [[UITapGestureRecognizer alloc]
      initWithTarget:self
      action:@selector(onTap)];
     
+    self.tapGestureRecognizer.delegate = self;
+    
+    self.leftMenuTableViewController.delegate = self;
+    
 }
+
+- (void)setHomeNavigationBar {
+    self.navigationItem.title = @"Home";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(onLogout)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(onNewTweet)];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.24 green:0.78 blue:0.96 alpha:0.5];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBarHidden = NO;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    NSLog(@"super %@",touch.view.superview);
+    if ([touch.view.superview isKindOfClass:[MenuTableViewCell class]]) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
+}
+
 - (void)onTap {
     [self closeMenu];
 }
@@ -86,7 +108,7 @@
                          self.leftMenuTableViewController.view.frame = CGRectMake(0.0f, 64.0f, [[UIScreen mainScreen] bounds].size.width * 0.4f, self.view.frame.size.height);
                      }
                      completion:^(BOOL finished) {
-                    
+                         
                      }];
 }
 
@@ -98,8 +120,55 @@
                          self.leftMenuTableViewController.view.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width * (-0.4f), 64.0f, [[UIScreen mainScreen] bounds].size.width * 0.4f, self.view.frame.size.height);
                      }
                      completion:^(BOOL finished) {
-                        
+                         
                      }];
+}
+
+- (void)clickMenuItemAtIndex:(NSInteger)index {
+    NSLog(@"Yes %ld", (long)index);
+    [self closeMenu];
+    
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    NSString *currentVc = app.currentVc;
+    [self removeSubview:currentVc];
+    NSLog(@"%@", currentVc);
+    if (index == 0) {
+        app.currentVc = @"TweetsViewController";
+        [self setHomeNavigationBar];
+    } else if (index == 1) {
+        app.currentVc = @"ProfileViewController";
+        self.profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+        self.profileViewControllerNav = [[UINavigationController alloc] initWithRootViewController:self.profileViewController];
+        [self.view insertSubview:self.profileViewControllerNav.view belowSubview:self.leftMenuTableViewController.view];
+        
+        [self addChildViewController:self.profileViewControllerNav];
+        [self.profileViewControllerNav didMoveToParentViewController:self];
+        self.navigationItem.title = @"Profile";
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem = nil;
+//        [self.profileViewController.view removeFromSuperview];
+    } else {
+        app.currentVc = @"MentionsViewController";
+        self.mentionsViewController = [[MentionsViewController alloc] initWithNibName:@"MentionsViewController" bundle:nil];
+        self.mentionsViewControllerNav = [[UINavigationController alloc] initWithRootViewController:self.mentionsViewController];
+        [self.view insertSubview:self.mentionsViewControllerNav.view belowSubview:self.leftMenuTableViewController.view];
+        
+        [self addChildViewController:self.mentionsViewControllerNav];
+        [self.mentionsViewControllerNav didMoveToParentViewController:self];
+        self.navigationItem.title = @"Mentions";
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+}
+
+- (void)removeSubview:(NSString*)subview {
+    if ([subview isEqualToString:@"TweetsViewController"]) {
+        
+    } else if ([subview isEqualToString:@"ProfileViewController"]) {
+        [self.profileViewControllerNav.view removeFromSuperview];
+    } else {
+        [self.mentionsViewControllerNav.view removeFromSuperview];
+    }
 }
 
 - (void)refreshData {
@@ -114,6 +183,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"will appear");
     [[TwitterClient sharedInstance] homeTimeLineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
         if (error != nil) {
             NSLog(@"Timeline error %@", error);

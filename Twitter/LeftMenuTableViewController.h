@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LeftMenuTableViewControllerDelegate <NSObject>
+- (void)clickMenuItemAtIndex:(NSInteger)index;
+@end
+
 @interface LeftMenuTableViewController : UITableViewController
 + (LeftMenuTableViewController *)sharedInstance;
+@property (weak, nonatomic) id<LeftMenuTableViewControllerDelegate> delegate;
 @end

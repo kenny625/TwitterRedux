@@ -31,16 +31,12 @@
     if (user != nil) {
         NSLog(@"welcome %@", user.name);
         TweetsViewController *tweetsViewController = [[TweetsViewController alloc] init];
-        LeftMenuTableViewController *leftMenuTableViewController = [[LeftMenuTableViewController alloc] init];
-        
-        [tweetsViewController addChildViewController:leftMenuTableViewController];
-        [tweetsViewController.view addSubview:leftMenuTableViewController.view];
-        [leftMenuTableViewController didMoveToParentViewController:tweetsViewController];
-        
         self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:tweetsViewController];
+        self.currentVc = @"TweetsViewController";
     } else {
         NSLog(@"User not login");
         self.window.rootViewController = [[LoginViewController alloc] init];
+        self.currentVc = @"LoginViewController";
     }
     
     [self.window makeKeyAndVisible];

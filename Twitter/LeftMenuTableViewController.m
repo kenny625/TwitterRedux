@@ -8,6 +8,7 @@
 
 #import "LeftMenuTableViewController.h"
 #import "MenuTableViewCell.h"
+#import "TweetsViewController.h"
 
 @interface LeftMenuTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -90,6 +91,21 @@
     // Configure the cell...
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.delegate clickMenuItemAtIndex:indexPath.row];
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    if (indexPath.row == 0) {
+//        if ([currentVc isEqualToString:@"TweetsViewController"]) {
+//            // close menu
+//        } else {
+//            
+//        }
+//    }
+    
 }
 
 

@@ -45,6 +45,8 @@
 		548689A21B4BDA02008C28A8 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548689A01B4BDA02008C28A8 /* MainViewController.xib */; };
 		548689A61B4BDA25008C28A8 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548689A41B4BDA25008C28A8 /* ProfileViewController.m */; };
 		548689A71B4BDA25008C28A8 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548689A51B4BDA25008C28A8 /* ProfileViewController.xib */; };
+		548689AB1B4D2C17008C28A8 /* MentionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548689A91B4D2C17008C28A8 /* MentionsViewController.m */; };
+		548689AC1B4D2C17008C28A8 /* MentionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548689AA1B4D2C17008C28A8 /* MentionsViewController.xib */; };
 		996AB452BEC4E6C3F8D0C36F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B6ED0F06FF9C94A03808E7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +120,9 @@
 		548689A31B4BDA25008C28A8 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		548689A41B4BDA25008C28A8 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		548689A51B4BDA25008C28A8 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		548689A81B4D2C17008C28A8 /* MentionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionsViewController.h; sourceTree = "<group>"; };
+		548689A91B4D2C17008C28A8 /* MentionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionsViewController.m; sourceTree = "<group>"; };
+		548689AA1B4D2C17008C28A8 /* MentionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MentionsViewController.xib; sourceTree = "<group>"; };
 		819D14DD5857E9DC4D3167C8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		98B6ED0F06FF9C94A03808E7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -207,6 +212,9 @@
 				548689A31B4BDA25008C28A8 /* ProfileViewController.h */,
 				548689A41B4BDA25008C28A8 /* ProfileViewController.m */,
 				548689A51B4BDA25008C28A8 /* ProfileViewController.xib */,
+				548689A81B4D2C17008C28A8 /* MentionsViewController.h */,
+				548689A91B4D2C17008C28A8 /* MentionsViewController.m */,
+				548689AA1B4D2C17008C28A8 /* MentionsViewController.xib */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -383,6 +391,7 @@
 				545448171B3D56F2004FBAB8 /* LaunchScreen.xib in Resources */,
 				5454485D1B44E84A004FBAB8 /* StatisticsTableViewCell.xib in Resources */,
 				545448141B3D56F2004FBAB8 /* Images.xcassets in Resources */,
+				548689AC1B4D2C17008C28A8 /* MentionsViewController.xib in Resources */,
 				545448581B43EAB3004FBAB8 /* DetailTableViewCell.xib in Resources */,
 				5454484A1B43CBBF004FBAB8 /* reply.png in Resources */,
 				5484FEEC1B4A8DC60078705D /* LeftMenuTableViewController.xib in Resources */,
@@ -455,6 +464,7 @@
 				545448621B44ED56004FBAB8 /* ActionTableViewCell.m in Sources */,
 				545448671B4525ED004FBAB8 /* ComposeViewController.m in Sources */,
 				545448371B413E1D004FBAB8 /* Tweet.m in Sources */,
+				548689AB1B4D2C17008C28A8 /* MentionsViewController.m in Sources */,
 				5454483E1B428203004FBAB8 /* TweetsViewController.m in Sources */,
 				5484FEEB1B4A8DC60078705D /* LeftMenuTableViewController.m in Sources */,
 			);
