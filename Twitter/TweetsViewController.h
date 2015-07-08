@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "LeftMenuTableViewController.h"
+#import "MainViewController.h"
 
-@interface TweetsViewController : UIViewController
+@interface TweetsViewController : MainViewController
 @property (strong, nonatomic) LeftMenuTableViewController * leftMenuTableViewController;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @end

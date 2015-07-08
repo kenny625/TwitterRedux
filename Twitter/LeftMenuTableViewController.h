@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LeftMenuTableViewController : UITableViewController
-
++ (LeftMenuTableViewController *)sharedInstance;
 @end

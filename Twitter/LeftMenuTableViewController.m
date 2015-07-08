@@ -15,6 +15,18 @@
 
 @implementation LeftMenuTableViewController
 
++ (LeftMenuTableViewController *)sharedInstance {
+    static LeftMenuTableViewController *instance = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (instance == nil) {
+            instance = [[LeftMenuTableViewController alloc] init];
+        }
+    });
+    return instance;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
