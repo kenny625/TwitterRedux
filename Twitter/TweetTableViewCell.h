@@ -16,6 +16,7 @@
 - (void)onClickReplyTweetTableViewCell:(TweetTableViewCell*)cell;
 - (void)onClickRetweetTweetTableViewCell:(TweetTableViewCell*)cell;
 - (void)onClickFavoriteTweetTableViewCell:(TweetTableViewCell*)cell;
+- (void)onTapUserImageTweetTableViewCell:(TweetTableViewCell*)cell;
 
 @end
 

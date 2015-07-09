@@ -20,16 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    User *user = [User currentUser];
-    [self.userProfileImg setImageWithURL:[NSURL URLWithString:user.profileImageUrl]];
-    [self.userBackgroundImg setImageWithURL:[NSURL URLWithString:user.profileBackgroundImageUrl]];
+    [self.userProfileImg setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl]];
+    [self.userBackgroundImg setImageWithURL:[NSURL URLWithString:self.user.profileBackgroundImageUrl]];
     self.userBackgroundImg.contentMode = UIViewContentModeScaleAspectFill;
     self.userBackgroundImg.clipsToBounds = YES;
-    self.name.text = user.name;
-    self.screenName.text = [NSString stringWithFormat:@"@%@", user.screenname] ;
-    self.tweetsCount.text = [NSString stringWithFormat:@"tweets\n\t%@", user.statusCount];
-    self.followingCount.text = [NSString stringWithFormat:@"following\n\t%@", user.followingCount];
-    self.followerscount.text = [NSString stringWithFormat:@"followers\n\t%@", user.followersCount];
+    self.name.text = self.user.name;
+    self.screenName.text = [NSString stringWithFormat:@"@%@", self.user.screenname] ;
+    self.tweetsCount.text = [NSString stringWithFormat:@"tweets\n\t%@", self.user.statusCount];
+    self.followingCount.text = [NSString stringWithFormat:@"following\n\t%@", self.user.followingCount];
+    self.followerscount.text = [NSString stringWithFormat:@"followers\n\t%@", self.user.followersCount];
     
 }
 

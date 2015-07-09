@@ -135,6 +135,7 @@
     } else if (index == 1) {
         app.currentVc = @"ProfileViewController";
         self.profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+        self.profileViewController.user = [User currentUser];
         self.profileViewControllerNav = [[UINavigationController alloc] initWithRootViewController:self.profileViewController];
         [self.view insertSubview:self.profileViewControllerNav.view belowSubview:self.leftMenuTableViewController.view];
         
@@ -143,7 +144,6 @@
         self.navigationItem.title = @"Profile";
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.rightBarButtonItem = nil;
-//        [self.profileViewController.view removeFromSuperview];
     } else {
         app.currentVc = @"MentionsViewController";
         self.mentionsViewController = [[MentionsViewController alloc] initWithNibName:@"MentionsViewController" bundle:nil];
@@ -166,6 +166,24 @@
     } else {
         [self.mentionsViewControllerNav.view removeFromSuperview];
     }
+}
+
+- (void)onTapUserImageTweetTableViewCell:(TweetTableViewCell*)cell {
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    app.currentVc = @"ProfileViewController";
+    NSIndexPath *indexPath = [self.tableview indexPathForCell:cell];
+    Tweet *tweet = self.tweets[indexPath.row];
+    
+    self.profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+    self.profileViewController.user = tweet.user;
+    self.profileViewControllerNav = [[UINavigationController alloc] initWithRootViewController:self.profileViewController];
+    [self.view insertSubview:self.profileViewControllerNav.view belowSubview:self.leftMenuTableViewController.view];
+    
+    [self addChildViewController:self.profileViewControllerNav];
+    [self.profileViewControllerNav didMoveToParentViewController:self];
+    self.navigationItem.title = @"Profile";
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)refreshData {

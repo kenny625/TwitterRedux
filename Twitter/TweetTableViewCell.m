@@ -40,4 +40,7 @@
 - (IBAction)onFavoriteBtn:(id)sender {
     [self.delegate onClickFavoriteTweetTableViewCell:self];
 }
+- (IBAction)tapUserImg:(id)sender {
+    [self.delegate onTapUserImageTweetTableViewCell:self];
+}
 @end

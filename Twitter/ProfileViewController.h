@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
+#import "User.h"
 
 @interface ProfileViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImg;
@@ -17,4 +18,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *tweetsCount;
 @property (weak, nonatomic) IBOutlet UILabel *followingCount;
 @property (weak, nonatomic) IBOutlet UILabel *followerscount;
+@property (strong, nonatomic) User *user;
 @end

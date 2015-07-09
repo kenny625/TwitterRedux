@@ -22,7 +22,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ej-O2-mhn">
-                        <rect key="frame" x="72" y="8" width="42.5" height="20.5"/>
+                        <rect key="frame" x="72" y="8" width="43" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -37,13 +37,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="screen_name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wS-mZ-rAy">
-                        <rect key="frame" x="122" y="8" width="102.5" height="20.5"/>
+                        <rect key="frame" x="122" y="8" width="103" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="created_at" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tq4-G5-wuV">
-                        <rect key="frame" x="300" y="8" width="81" height="20.5"/>
+                        <rect key="frame" x="300" y="8" width="81" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35R-2d-DAW">
-                        <rect key="frame" x="204" y="102.5" width="16" height="16"/>
+                        <rect key="frame" x="204" y="103" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="dKE-rw-O6B"/>
                             <constraint firstAttribute="height" constant="16" id="e81-OK-Z5n"/>
@@ -87,6 +87,19 @@
                             <action selector="onReply:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uoX-SM-wVA"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ir7-kW-Pco">
+                        <rect key="frame" x="8" y="8" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="a7H-ND-tCD"/>
+                            <constraint firstAttribute="height" constant="48" id="yBY-Xv-YlJ"/>
+                        </constraints>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="tapUserImg:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eg7-Td-dMS"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="y8D-ti-3Ko" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="2OX-9c-qA1"/>
@@ -101,6 +114,8 @@
                     <constraint firstItem="35R-2d-DAW" firstAttribute="top" secondItem="a8I-R5-iG8" secondAttribute="top" id="U2H-DA-yNX"/>
                     <constraint firstItem="1ej-O2-mhn" firstAttribute="leading" secondItem="y8D-ti-3Ko" secondAttribute="trailing" constant="16" id="V5L-QQ-gnn"/>
                     <constraint firstAttribute="trailingMargin" secondItem="YMN-i8-319" secondAttribute="trailing" constant="8" id="Vk7-1L-UON"/>
+                    <constraint firstItem="Ir7-kW-Pco" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="dQL-EC-0d4"/>
+                    <constraint firstItem="Ir7-kW-Pco" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="fDe-VG-2fv"/>
                     <constraint firstItem="y8D-ti-3Ko" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="fgA-XZ-B8z"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="EJZ-1c-wco" secondAttribute="bottom" constant="8" id="kL9-lh-5kX"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="y8D-ti-3Ko" secondAttribute="bottom" constant="8" id="p0l-Iu-BkV"/>
