@@ -47,6 +47,9 @@
 		548689A71B4BDA25008C28A8 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548689A51B4BDA25008C28A8 /* ProfileViewController.xib */; };
 		548689AB1B4D2C17008C28A8 /* MentionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548689A91B4D2C17008C28A8 /* MentionsViewController.m */; };
 		548689AC1B4D2C17008C28A8 /* MentionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548689AA1B4D2C17008C28A8 /* MentionsViewController.xib */; };
+		548689B41B4E6169008C28A8 /* Mention.m in Sources */ = {isa = PBXBuildFile; fileRef = 548689B31B4E6169008C28A8 /* Mention.m */; };
+		548689B81B4E6911008C28A8 /* MentionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 548689B61B4E6911008C28A8 /* MentionTableViewCell.m */; };
+		548689B91B4E6911008C28A8 /* MentionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548689B71B4E6911008C28A8 /* MentionTableViewCell.xib */; };
 		996AB452BEC4E6C3F8D0C36F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B6ED0F06FF9C94A03808E7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +126,11 @@
 		548689A81B4D2C17008C28A8 /* MentionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionsViewController.h; sourceTree = "<group>"; };
 		548689A91B4D2C17008C28A8 /* MentionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionsViewController.m; sourceTree = "<group>"; };
 		548689AA1B4D2C17008C28A8 /* MentionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MentionsViewController.xib; sourceTree = "<group>"; };
+		548689B21B4E6169008C28A8 /* Mention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mention.h; sourceTree = "<group>"; };
+		548689B31B4E6169008C28A8 /* Mention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mention.m; sourceTree = "<group>"; };
+		548689B51B4E6911008C28A8 /* MentionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionTableViewCell.h; sourceTree = "<group>"; };
+		548689B61B4E6911008C28A8 /* MentionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionTableViewCell.m; sourceTree = "<group>"; };
+		548689B71B4E6911008C28A8 /* MentionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MentionTableViewCell.xib; sourceTree = "<group>"; };
 		819D14DD5857E9DC4D3167C8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		98B6ED0F06FF9C94A03808E7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -215,6 +223,9 @@
 				548689A81B4D2C17008C28A8 /* MentionsViewController.h */,
 				548689A91B4D2C17008C28A8 /* MentionsViewController.m */,
 				548689AA1B4D2C17008C28A8 /* MentionsViewController.xib */,
+				548689B51B4E6911008C28A8 /* MentionTableViewCell.h */,
+				548689B61B4E6911008C28A8 /* MentionTableViewCell.m */,
+				548689B71B4E6911008C28A8 /* MentionTableViewCell.xib */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -252,6 +263,8 @@
 				545448361B413E1D004FBAB8 /* Tweet.m */,
 				545448381B413E37004FBAB8 /* User.h */,
 				545448391B413E37004FBAB8 /* User.m */,
+				548689B21B4E6169008C28A8 /* Mention.h */,
+				548689B31B4E6169008C28A8 /* Mention.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -380,6 +393,7 @@
 			files = (
 				5486899D1B4BBCB5008C28A8 /* MenuTableViewCell.xib in Resources */,
 				5454486C1B45743E004FBAB8 /* favorite_on.png in Resources */,
+				548689B91B4E6911008C28A8 /* MentionTableViewCell.xib in Resources */,
 				545448681B4525ED004FBAB8 /* ComposeViewController.xib in Resources */,
 				545448441B43BEDD004FBAB8 /* TweetTableViewCell.xib in Resources */,
 				545448631B44ED56004FBAB8 /* ActionTableViewCell.xib in Resources */,
@@ -455,9 +469,11 @@
 				548689A11B4BDA02008C28A8 /* MainViewController.m in Sources */,
 				5454484F1B43E886004FBAB8 /* DetailTableViewController.m in Sources */,
 				5454485C1B44E84A004FBAB8 /* StatisticsTableViewCell.m in Sources */,
+				548689B81B4E6911008C28A8 /* MentionTableViewCell.m in Sources */,
 				545448431B43BEDD004FBAB8 /* TweetTableViewCell.m in Sources */,
 				545448091B3D56F2004FBAB8 /* main.m in Sources */,
 				5486899C1B4BBCB5008C28A8 /* MenuTableViewCell.m in Sources */,
+				548689B41B4E6169008C28A8 /* Mention.m in Sources */,
 				548689A61B4BDA25008C28A8 /* ProfileViewController.m in Sources */,
 				545448571B43EAB3004FBAB8 /* DetailTableViewCell.m in Sources */,
 				5454482F1B3D594A004FBAB8 /* LoginViewController.m in Sources */,

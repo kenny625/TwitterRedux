@@ -10,5 +10,11 @@
 #import "MainViewController.h"
 
 @interface ProfileViewController : UIViewController
-
+@property (weak, nonatomic) IBOutlet UIImageView *userProfileImg;
+@property (weak, nonatomic) IBOutlet UIImageView *userBackgroundImg;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *screenName;
+@property (weak, nonatomic) IBOutlet UILabel *tweetsCount;
+@property (weak, nonatomic) IBOutlet UILabel *followingCount;
+@property (weak, nonatomic) IBOutlet UILabel *followerscount;
 @end

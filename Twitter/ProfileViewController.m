@@ -8,6 +8,8 @@
 
 #import "ProfileViewController.h"
 #import "MentionsViewController.h"
+#import "User.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface ProfileViewController ()
 
@@ -18,8 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.view setBackgroundColor:[UIColor blueColor]];
+    User *user = [User currentUser];
+    [self.userProfileImg setImageWithURL:[NSURL URLWithString:user.profileImageUrl]];
+    [self.userBackgroundImg setImageWithURL:[NSURL URLWithString:user.profileBackgroundImageUrl]];
+    self.userBackgroundImg.contentMode = UIViewContentModeScaleAspectFill;
+    self.userBackgroundImg.clipsToBounds = YES;
+    self.name.text = user.name;
+    self.screenName.text = [NSString stringWithFormat:@"@%@", user.screenname] ;
+    self.tweetsCount.text = [NSString stringWithFormat:@"tweets\n\t%@", user.statusCount];
+    self.followingCount.text = [NSString stringWithFormat:@"following\n\t%@", user.followingCount];
+    self.followerscount.text = [NSString stringWithFormat:@"followers\n\t%@", user.followersCount];
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

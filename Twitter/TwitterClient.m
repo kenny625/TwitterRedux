@@ -8,6 +8,7 @@
 
 #import "TwitterClient.h"
 #import "Tweet.h"
+#import "Mention.h"
 
 NSString * const kTwitterConsumerKey = @"uGBez86TgiwR6WYxxj8VQSdkZ";
 NSString * const kTwitterConsumerSecret= @"wJOTXIySdQ914PxfGRY1ulbNmUdTuCnXMem1H7Yfo6CFIkkSTl";
@@ -101,12 +102,14 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
-//- (void)newTweetWithParams:(NSDictionary*) params completion:(void (^)(NSArray *response, NSError *error))completion {
-//    [self POST:@"1.1/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        completion(responseObject, nil);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        completion(nil, error);
-//    }];
-//}
+- (void)mentionsTimeLineWithParams:(NSDictionary*) parrams completion:(void (^)(NSArray *mentions, NSError *error))completion {
+    [self GET:@"1.1/statuses/mentions_timeline.json" parameters:parrams success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *mentions = [Mention mentionsWithArray:responseObject];
+        completion(mentions, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"mention error%@", error);
+        completion(nil, error);
+    }];
+}
 
 @end

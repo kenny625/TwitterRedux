@@ -7,17 +7,54 @@
 //
 
 #import "MentionsViewController.h"
+#import "TwitterClient.h"
+#import "MentionTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface MentionsViewController ()
-
+@interface MentionsViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) NSArray *mentions;
 @end
 
 @implementation MentionsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.tableview.delegate = self;
+    self.tableview.dataSource = self;
+    
+    [self.tableview registerNib:[UINib nibWithNibName:@"MentionTableViewCell" bundle:nil] forCellReuseIdentifier:@"MentionCell"];
+    
+    
+    [[TwitterClient sharedInstance] mentionsTimeLineWithParams:nil completion:^(NSArray *mentions, NSError *error) {
+        self.mentions = mentions;
+        [self.tableview reloadData];
+    }];
 }
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.mentions.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    MentionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MentionCell"];
+    Mention *mention = self.mentions[indexPath.row];
+    cell.textLabel.text = mention.text;
+    [cell.userImg setImageWithURL:[NSURL URLWithString:mention.user.profileImageUrl]];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewAutomaticDimension;
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewAutomaticDimension;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

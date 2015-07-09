@@ -44,9 +44,6 @@
                   forControlEvents:UIControlEventValueChanged];
     [self.tableview addSubview:self.refreshControl];
     
-    
-    
-    
     self.leftMenuTableViewController = [[LeftMenuTableViewController alloc] init];
     
     [self addChildViewController:self.leftMenuTableViewController];

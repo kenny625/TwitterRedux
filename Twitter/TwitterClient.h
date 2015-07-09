@@ -19,4 +19,5 @@
 - (void)replyWithParams:(NSDictionary*) params completion:(void (^)(NSArray *response, NSError *error))completion;
 - (void)retweetWithId:(NSInteger) tweetid completion:(void (^)(NSArray *response, NSError *error))completion;
 - (void)favoriteWithId:(NSInteger) tweetid completion:(void (^)(NSArray *response, NSError *error))completion;
+- (void)mentionsTimeLineWithParams:(NSDictionary*) parrams completion:(void (^)(NSArray *mentions, NSError *error))completion;
 @end

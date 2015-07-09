@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
+#import "Mention.h"
 
 @interface MentionsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 @end
