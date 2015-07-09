@@ -26,9 +26,9 @@
     self.userBackgroundImg.clipsToBounds = YES;
     self.name.text = self.user.name;
     self.screenName.text = [NSString stringWithFormat:@"@%@", self.user.screenname] ;
-    self.tweetsCount.text = [NSString stringWithFormat:@"tweets\n\t%@", self.user.statusCount];
-    self.followingCount.text = [NSString stringWithFormat:@"following\n\t%@", self.user.followingCount];
-    self.followerscount.text = [NSString stringWithFormat:@"followers\n\t%@", self.user.followersCount];
+    self.tweetsCount.text = [NSString stringWithFormat:@"%@", self.user.statusCount];
+    self.followingCount.text = [NSString stringWithFormat:@"%@", self.user.followingCount];
+    self.followerscount.text = [NSString stringWithFormat:@"%@", self.user.followersCount];
     
 }
 
